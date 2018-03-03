@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Switching Images Slider</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+    <script>
+        addEventListener('DOMContentLoaded', e => {
+            const _R = document.getElementById('i'),
+                _O = document.querySelector('output');
+            _R.max = document.querySelector('.container').children.length - 1;
+            _R.addEventListener('input', e => {
+                document.body.style.setProperty('--i', _O.value = +_R.value)
+            }, false)
+        }, false)
+    </script>
+
+
+    <style>
+        * {
+            margin: 0;
+        }
+
+        body {
+            overflow-x: hidden;
+            text-align: center;
+            font:consolas,monaco,monospace;
+        }
+
+        .container {
+            --n: 1;
+            display: flex;
+            align-items: center;
+            overflow-y: hidden;
+            width: 100%;
+            width: calc(var(--n)*100%);
+            height: 50vw;
+            max-height: 100vh;
+            transform: translate(calc(var(--i)/var(--n)*-100%));
+        }
+
+        .container img {
+            width: 100%;
+            width: calc(100%/var(--n));
+        }
+        #i {
+            display: block;
+            margin: .5em auto;
+            cursor: pointer;
+        }
+    </style>
+
+
+
+
+</head>
+
+<body>
+    <div class="container">
+        <img src="images/1.jpg" alt="">
+        <img src="images/2.jpg" alt="">
+        <img src="images/3.jpg" alt="">
+        <img src="images/4.jpg" alt="">
+        <img src="images/5.jpg" alt="">
+    </div>
+    <input id='i' type='range' value='0' />
+    <label for='i'>Current Index == </label>
+    <output for='i'>0</output>
+
+    <script src="js/switching-images.js"></script>
+</body>
+
+</html>
